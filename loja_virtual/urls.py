@@ -18,16 +18,14 @@ from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
 from produtos.api.viewsets import ProdutoViewSet
-from signup.api.viewsets import SignupViewSet
-from login.api.viewsets import LoginViewSet
 from pedidos.api.viewsets import PedidoViewSet
+from accounts.api import viewsets
 
 
 router = routers.DefaultRouter()
-router.register(r'produtos', ProdutoViewSet, base_name='Produtos')
-router.register(r'signup', SignupViewSet)
-router.register(r'login', LoginViewSet)
+router.register(r'produtos', ProdutoViewSet)
 router.register(r'pedidos', PedidoViewSet)
+router.register(r'users', viewsets.UserCreate, base_name='account-create')
 
 urlpatterns = [
     path('', include(router.urls)),
