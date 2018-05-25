@@ -5,4 +5,4 @@ from signup.models import Signup
 class SignupSerializer(ModelSerializer):
     class Meta:
         model = Signup
-        fields = ['nome', 'email', 'telefone', 'senha']
+        fields = ['first_name', 'last_name', 'email', 'phone', 'password']
