@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class AccountModel(models.Model):
+class SignupModel(models.Model):
     email = models.EmailField()
     username = models.CharField(max_length=32)
     password = models.CharField(max_length=30)

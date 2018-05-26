@@ -4,5 +4,5 @@ from .serializers import ProdutoSerializer
 
 
 class ProdutoViewSet(ModelViewSet):
-    queryset = Produtos.objects.all()
+    queryset = Produtos.objects.all().order_by('categoria')
     serializer_class = ProdutoSerializer

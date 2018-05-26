@@ -6,6 +6,3 @@ from .serializers import PedidoSerializer
 class PedidoViewSet(ModelViewSet):
     queryset = Pedidos.objects.all()
     serializer_class = PedidoSerializer
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)

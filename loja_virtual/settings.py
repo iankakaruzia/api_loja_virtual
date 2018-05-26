@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TRELLO_API_KEY = 'c381956e52fa72621677b692064051df'
+TRELLO_API_SECRET = 'bc0d96b75ac6a07aacc2872f1f9898c3cac7981855c8b5c1dff165a98c3ce05c'
+
 
 # Application definition
 
