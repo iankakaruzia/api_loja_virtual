@@ -1,31 +1,26 @@
-import requests
-
-#url = "https://api.trello.com/1/boards/5b03fc922eb84b18fa9b3eff"
-
-"""
-    Pegando a Board com os Dados
-"""
-board = "https://api.trello.com/1/boards/5b03fc922eb84b18fa9b3eff?fields=name,url&key=c381956e52fa72621677b692064051df&token=bc0d96b75ac6a07aacc2872f1f9898c3cac7981855c8b5c1dff165a98c3ce05c"
-
-response = requests.request("GET", board)
-
-print(response.text)
-
-"""
-    Cadastrando Card
-"""
-
-url = "https://api.trello.com/1/cards"
-
-querystring = "http://127.0.0.1:8000/pedidos/2/"
-
-response = requests.request("POST", url, params=querystring)
-
-print(response.text)
-
 import trello
+import urllib.request
+import json
 
-api = trello.TrelloApi('c381956e52fa72621677b692064051df', 'bc0d96b75ac6a07aacc2872f1f9898c3cac7981855c8b5c1dff165a98c3ce05c')
+"""
+    Trello Board: Loja Virtual
+    Link: https://trello.com/b/t0hVF51V/loja-virtual
+    Não está integrado com a aplicação, somente realiza o post nos pedidos da api quando execulta manualmente esse script
+"""
 
-api.boards.get_list('5b03fc922eb84b18fa9b3eff')
-#api.cards.new(querystring['id'])
+
+class TrelloApi(object):
+
+    api = trello.TrelloApi('c381956e52fa72621677b692064051df', 'bc0d96b75ac6a07aacc2872f1f9898c3cac7981855c8b5c1dff165a98c3ce05c')
+
+    def post_pedidos(self):
+        with urllib.request.urlopen("http://127.0.0.1:8000/pedidos/") as url:
+            pedidos = json.loads(url.read().decode())
+
+        for p in pedidos:
+            descricao = json.dumps(p, indent=4)
+            self.api.cards.new(name='Pedido {}'.format(p.get('id')), idList='5b03fc922eb84b18fa9b3f00', desc='Produtos {}'.format(descricao))
+
+    def get_status_pedido(self):
+        return 'Status'
+

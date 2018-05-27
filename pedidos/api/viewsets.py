@@ -6,3 +6,6 @@ from .serializers import PedidoSerializer
 class PedidoViewSet(ModelViewSet):
     queryset = Pedidos.objects.all()
     serializer_class = PedidoSerializer
+
+    def create(self, request, *args, **kwargs):
+        return super(PedidoViewSet, self).create(request, *args, **kwargs)

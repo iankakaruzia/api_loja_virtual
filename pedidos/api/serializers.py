@@ -11,7 +11,8 @@ class PedidoSerializer(ModelSerializer):
 
     class Meta:
         model = Pedidos
-        fields = ['id', 'usuario', 'produtos', 'valor_pedido']
+        fields = ['id', 'usuario', 'produtos', 'valor_pedido', 'status']
+        read_only = ['status']
 
     def cria_pedidos(self, produtos, p):
         for produto in produtos:
@@ -24,7 +25,6 @@ class PedidoSerializer(ModelSerializer):
 
         p = Pedidos.object.create(**validated_data)
         self.cria_pedidos(produtos, p)
-
 
         p.save()
 

@@ -26,7 +26,6 @@ router = routers.DefaultRouter()
 router.register(r'produtos', ProdutoViewSet, base_name='Produtos')
 router.register(r'pedidos', PedidoViewSet)
 router.register(r'users', viewsets.SignupViewSet, base_name='account-create')
-router.register(r'login', viewsets.LoginViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

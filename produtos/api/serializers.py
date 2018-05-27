@@ -6,3 +6,4 @@ class ProdutoSerializer(ModelSerializer):
     class Meta:
         model = Produtos
         fields = ['nome', 'preco', 'quantidade', 'categoria']
+        write_only = ['quantidade']
