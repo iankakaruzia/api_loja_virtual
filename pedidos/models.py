@@ -5,7 +5,7 @@ from produtos.models import Produtos
 
 
 class Pedidos(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     produtos = models.ManyToManyField(Produtos)
     status = models.CharField(max_length=30, default='Pedido Realizado')
 
