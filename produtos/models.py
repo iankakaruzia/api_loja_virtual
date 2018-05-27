@@ -14,7 +14,7 @@ CATEGORIAS = (
 class Produtos(models.Model):
 
     nome = models.CharField(max_length=200)
-    preco = models.DecimalField(max_digits=1000000, decimal_places=2)
+    preco = models.DecimalField(max_digits=1000, decimal_places=2)
     quantidade = models.IntegerField(default=1)
     categoria = models.IntegerField(choices=CATEGORIAS, default=1)
 
